@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="icon" href="Favicon.png" type="image/png">
+    <style>
+        /* Font Display */
+        @font-face {
+            font-family: 'slkscr';
+            src: url('slkscr.ttf') format('truetype');
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #28282b;
+            background-image: url('Background.gif');
+            background-repeat: repeat;
+            background-size: cover;
+            background-position: 50% 0%;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+        }
+
+
+        .container {
+            position: absolute;
+            display: flex;
+            padding: 10px;
+            margin: 20px;
+            border: 2px solid rgba(0, 0, 0, 0.8);
+            background-color: rgba(255, 255, 255, 0.75);
+            box-shadow: 6px 6px black;
+            left: 50%;
+            top: 45%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Navigator Stuff */
+        nav {
+            font-family: 'slkscr', sans-serif;
+            background-color: transparent;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 4;
+            opacity: 1;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        nav a {
+            display: inline-block;
+            color: white;
+            text-align: center;
+            padding: 16px 20px;
+            margin-right: 10px;
+            text-decoration: none;
+            transition: all 0.3s ease-in-out;
+        }
+
+        nav a:last-child {
+            margin-right: 0;
+        }
+
+        nav a:hover {
+            background-color: transparent;
+            color: #FFFFFF;
+            text-underline-offset: 5px;
+            font-size: 25px;
+            cursor: crosshair;
+        }
+
+        a.active {
+            background-color: transparent;
+            color: white;
+            text-decoration: underline 4px;
+            text-underline-offset: 5px;
+            font-size: 25px;
+            padding: 16px 20px;
+        }
+
+        .wrapper {
+            --input-focus: white;
+            --font-color: #323232;
+            --font-color-sub: #666;
+            --bg-color: #fff;
+            --bg-color-alt: #666;
+            --main-color: #323232;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            /* Add this line to align items at the top */
+        }
+
+
+        /* Contact Form */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 40px;
+            margin-top: 60px;
+            font-family: 'slkscr', sans-serif;
+        }
+
+        .title {
+            opacity: 1;
+            text-decoration: underline 4px;
+            font-family: slkscr, sans-serif;
+            font-size: 25px;
+            color: black;
+            margin: 20px 0;
+            margin-left: 100px;
+            font-weight: 900;
+            text-align: left;
+        }
+
+        .subtitle {
+            font-family: slkscr, sans-serif;
+            font-size: 18px;
+            color: black;
+            margin: 20px 0;
+            font-weight: 500;
+            text-align: left;
+            margin-left: 30px;
+            padding-right: 25px;
+        }
+
+        .social-links {
+            position: fixed;
+            top: 92.5%;
+            left: 18%;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .social-links a {
+            display: block;
+            text-decoration: none;
+        }
+
+        .social-links img {
+            width: 25px;
+            height: 25px;
+            opacity: 0.75;
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        }
+
+        .social-links img:hover {
+            transform: scale(1.2);
+            opacity: 1;
+        }
+
+        .contact-input {
+            font-family: 'slkscr', sans-serif;
+            width: 250px;
+            height: 40px;
+            border-radius: 1px;
+            border: 2px solid var(--main-color);
+            background-color: var(--bg-color);
+            box-shadow: 4px 4px var(--main-color);
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--font-color);
+            padding: 5px 10px;
+            outline: none;
+        }
+
+        .contact-input::placeholder {
+            color: var(--font-color-sub);
+            opacity: 0.8;
+        }
+
+        .contact-input:focus {
+            border: 2px solid var(--input-focus);
+        }
+
+        .contact-btn:active {
+            box-shadow: 0px 0px var(--main-color);
+            transform: translate(3px, 3px);
+        }
+
+        .contact-btn {
+            font-family: slkscr, sans-serif;
+            margin: 20px 0 20px 0;
+            width: 150px;
+            height: 50px;
+            border-radius: 5px;
+            border: 2px solid var(--main-color);
+            background-color: var(--bg-color);
+            box-shadow: 4px 4px var(--main-color);
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--font-color);
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            position: absolute;
+            bottom: 40px;
+            right: 150px;
+        }
+
+        .contact-btn:hover {
+            width: 165px;
+            height: 55px;
+            font-size: 22px;
+            margin: 18px 0 18px 0;
+        }
+
+        .YourNameForm {
+            height: 30px;
+            width: 400px;
+            margin-bottom: 20px;
+        }
+
+        .YourEmailForm {
+            height: 30px;
+            width: 400px;
+            margin-bottom: 20px;
+        }
+
+        .MessageForm {
+            height: 60px;
+            width: 400px;
+            margin-bottom: 150px;
+        }
+
+        .Btn {
+            width: 1;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+            margin-top: 60px;
+            opacity: 1;
+        }
+
+        .image-container {
+            position: absolute;
+            top: -12%;
+            left: 94%;
+            transform: translateX(-50%);
+            z-index: 4;
+        }
+
+        .image-container img {
+            display: block;
+            width: 75px;
+            height: auto;
+        }
+    </style>
+
+</head>
+
+<body>
+    <form action="https://formspree.io/f/xwkjdqga" method="POST">
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="about.html">About</a>
+            <a href="skills.html">Skills</a>
+            <a class="active" href="#contact">Contact</a>
+        </nav>
+
+        <div class="container">
+            <div class="wrapper">
+                <div style="display: flex; flex-direction: column;">
+                    <div style="display: flex; flex-direction: column;">
+                        <div class="title">Contact Form</div>
+                        <div class="subtitle">Get in touch with me for further questions or inquiries</div>
+                        <div class="social-links">
+                            <a href="https://discord.com/users/507213791889588235" style="filter: invert(100%);"
+                                target="_blank"><img src="discord.png" alt="Discord"></a>
+                            <a href="https://www.instagram.com/_cikle/" target="_blank"><img src="instagram.png"
+                                    style="filter: invert(100%);" alt="Instagram"></a>
+                            <a href="https://twitter.com/DinosaurEarth" target="_blank"><img src="twitter.png"
+                                    style="filter: invert(100%);" alt="Twitter"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form flip-card__front">
+                    <div style="display: flex; flex-direction: column; align-items: flex-start;">
+                        <input class="contact-input YourNameForm" name="name" type="text" placeholder="Your Name*"
+                            required />
+                        <input class="contact-input YourEmailForm" name="email" type="email" placeholder="Your Email*"
+                            required />
+                        <textarea class="contact-input MessageForm" name="message" placeholder="Your Message*"
+                            required></textarea>
+                        <div class="image-container">
+                            <img src="Cat.gif" alt="Cat Image">
+                        </div>
+                        <input class="contact-btn" type="submit" value="Submit" />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </form>
+
+</body>
+
+</html>
