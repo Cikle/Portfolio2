@@ -441,6 +441,22 @@
 			transform: scale(1.2);
 			opacity: 1;
 		}
+
+
+		/* Mobile Styles */
+		@media only screen and (max-width: 600px) {
+			.page .title {
+				font-size: 40px;
+			}
+
+			.page .description {
+				font-size: 20px;
+			}
+
+			.page button {
+				font-size: 18px;
+			}
+		}
 	</style>
 </head>
 
@@ -502,9 +518,9 @@
 	</div>
 
 	<div class="social-links">
-		<a href="https://discord.com/users/507213791889588235" target="_blank"><img src="Discord.png" alt="Discord"></a>
-		<a href="https://www.instagram.com/_cikle/" target="_blank"><img src="Instagram.png" alt="Instagram"></a>
-		<a href="https://twitter.com/DinosaurEarth" target="_blank"><img src="Twitter.png" alt="Twitter"></a>
+		<a href="https://discord.com/users/507213791889588235" target="_blank"><img src="discord.png" alt="Discord"></a>
+		<a href="https://www.instagram.com/_cikle/" target="_blank"><img src="instagram.png" alt="Instagram"></a>
+		<a href="https://twitter.com/DinosaurEarth" target="_blank"><img src="twitter.png" alt="Twitter"></a>
 	</div>
 
 	<script>
@@ -513,7 +529,7 @@
 		}
 
 		function openContactPage() {
-						window.location.href = "contact.html";
+			window.location.href = "contact.html";
 		}
 
 		function openAboutMePage() {
